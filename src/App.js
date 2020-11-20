@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import { Button, Card, CardContent, Input } from '@material-ui/core';
 
 
 function App() {
@@ -11,20 +12,34 @@ function App() {
     setInput(event.target.value);
   }
 
-  const addTodo = ()=>{
+  const addTodo = (event)=>{
+    event.preventDefault();
     setTodos([...todos, input]);
+    setInput("");
+    
   };
   return (
     
     <div className="App">
-      <h1>This is a todo app</h1>
-      <input type="text" onChange={chng}/>
-      <button onClick={addTodo}>add todo</button>
+      <Card className="app__header">
+        <CardContent>
+        <h1>This is a todo app</h1>
+        </CardContent>
+      </Card>
+      
+
+      <form>
+        <Input type="text" value={input} onChange={chng}/>
+        <button type="submit" onClick={addTodo}>add todo</button>
+      </form>
+      
       <ul>
         {todos.map(todo => (
           <li>{todo}</li>
         ))}
       </ul>
+
+      <Button color="secondary">Secondary</Button>
     </div>
   );
 }
