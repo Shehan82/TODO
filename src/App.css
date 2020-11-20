@@ -2,4 +2,8 @@
   text-align: center;
 }
 
-
+.app__header
+{
+  width: 50%;
+  margin: 20px auto 20px auto;
+}

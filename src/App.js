@@ -1,12 +1,13 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useStyles } from 'react';
 import { Button, Card, CardContent, Input } from '@material-ui/core';
 
 
 function App() {
 
   const [todos, setTodos] = useState(["hello", "hi", "how", "much"]);
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("");
+ 
 
   const chng = (event) => {
     setInput(event.target.value);
@@ -28,16 +29,25 @@ function App() {
       </Card>
       
 
-      <form>
-        <Input type="text" value={input} onChange={chng}/>
-        <button type="submit" onClick={addTodo}>add todo</button>
+      <Card className="app__header">
+        <CardContent>
+        <form>
+        <Input type="text" value={input} onChange={chng}/> &nbsp;
+        <Button size="large" variant="outlined"  color="primary" type="submit" onClick={addTodo}>add todo</Button>
       </form>
+        </CardContent>
+      </Card>
       
-      <ul>
+      <Card className="app__header">
+        <CardContent>
+        <ul>
         {todos.map(todo => (
           <li>{todo}</li>
         ))}
       </ul>
+        </CardContent>
+      </Card>
+     
 
       <Button color="secondary">Secondary</Button>
     </div>
