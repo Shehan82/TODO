@@ -1,13 +1,25 @@
 import './App.css';
-import React, { useState, useStyles } from 'react';
+import React, { useState, useStyles, useEffect } from 'react';
 import { Button, Card, CardContent, Input, InputLabel, TextField } from '@material-ui/core';
 import Todo from './Todo';
+import db from './firebase';
 
 
 function App() {
 
-  const [todos, setTodos] = useState(["hello", "hi", "how", "much"]);
+  const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
+
+  useEffect(() => {
+
+    db.collection('todos').onSnapshot(snapshot => {
+      setTodos(snapshot.docs.map(doc => doc.data().todo))
+    })
+
+  }, []) //when this array is in the blank code in the brackets
+        // runs ones. and if there is any variable in the array code in the
+      // run once at the app load and when the changing happen this variable
+      
  
 
   const chng = (event) => {
