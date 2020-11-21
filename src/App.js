@@ -13,18 +13,18 @@ function App() {
   const [order, setOrder] = useState("desc");
 
   useEffect(() => {
-    if(order === "desc")
-    {
-      db.collection('todos').orderBy('timestamp','desc').onSnapshot(snapshot => {
+    // if(order === "desc")
+    // {
+      db.collection('todos').orderBy('timestamp', order).onSnapshot(snapshot => {
         setTodos(snapshot.docs.map(doc => doc.data().todo))
       })
-    }
-    if(order === "asc")
-    {
-      db.collection('todos').orderBy('timestamp','asc').onSnapshot(snapshot => {
-        setTodos(snapshot.docs.map(doc => doc.data().todo))
-      })
-    }
+    // }
+    // if(order === "asc")
+    // {
+    //   db.collection('todos').orderBy('timestamp','asc').onSnapshot(snapshot => {
+    //     setTodos(snapshot.docs.map(doc => doc.data().todo))
+    //   })
+    // }
    
 
   }, [order]) //when this array is in the blank code in the brackets
