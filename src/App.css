@@ -4,6 +4,13 @@
 
 .app__header
 {
-  width: 50%;
+  width: 80%;
   margin: 20px auto 20px auto;
+}
+
+.app__todoList
+{
+  width: 80%;
+  margin: 20px auto 20px auto;
+  text-align: left;
 }
