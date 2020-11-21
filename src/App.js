@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useStyles } from 'react';
-import { Button, Card, CardContent, Input } from '@material-ui/core';
+import { Button, Card, CardContent, Input, InputLabel, TextField } from '@material-ui/core';
+import Todo from './Todo';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
     <div className="App">
       <Card className="app__header">
         <CardContent>
-        <h1>This is a todo app</h1>
+        <h1>TODO</h1>
         </CardContent>
       </Card>
       
@@ -32,24 +33,26 @@ function App() {
       <Card className="app__header">
         <CardContent>
         <form>
-        <Input type="text" value={input} onChange={chng}/> &nbsp;
-        <Button size="large" variant="outlined"  color="primary" type="submit" onClick={addTodo}>add todo</Button>
+
+        <TextField  value={input} onChange={chng} id="standard-basic" label="Enter your todo here" />  &nbsp;
+        {/* <Input type="text" value={input} onChange={chng} placeholder="Enter your todo here!"/> &nbsp; */}
+        <Button disabled={!input} size="large" variant="outlined"  color="primary" type="submit" onClick={addTodo}>add todo</Button>
+       
       </form>
         </CardContent>
       </Card>
       
-      <Card className="app__header">
+      <Card className="app__todoList">
         <CardContent>
         <ul>
         {todos.map(todo => (
-          <li>{todo}</li>
+          <Todo details={todo}/>
+          
         ))}
       </ul>
         </CardContent>
       </Card>
      
-
-      <Button color="secondary">Secondary</Button>
     </div>
   );
 }
